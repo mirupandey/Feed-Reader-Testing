@@ -56,13 +56,14 @@ $(function() {
 
     describe('The menu', function() {
         var menuIcon = $('.menu-icon-link');
+        var className;
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
         it('shows on click', function() {
-            var className = $('body').attr('class').split(' ');
+            className = $('body').attr('class').split(' ');
 
             expect(className).toContain('menu-hidden');
         });
@@ -74,22 +75,22 @@ $(function() {
           it('shows/hides menu on click', function() {
             $('.menu-icon-link').click();
 
-            var className = $('body').attr('class').split(' ');
+            className = $('body').attr('class').split(' ');
             expect(className).not.toContain('menu-hidden');
 
             $('a[data-id="1"]').click();
 
-            var className = $('body').attr('class').split(' ');
+            className = $('body').attr('class').split(' ');
             expect(className).toContain('menu-hidden');
 
             $('a[data-id="2"]').click();
 
-            var className = $('body').attr('class').split(' ');
+            className = $('body').attr('class').split(' ');
             expect(className).toContain('menu-hidden');
 
             $('a[data-id="3"]').click();
 
-            var className = $('body').attr('class').split(' ');
+            className = $('body').attr('class').split(' ');
             expect(className).toContain('menu-hidden');
           });
     });
