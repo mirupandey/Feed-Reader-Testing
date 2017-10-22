@@ -2,6 +2,10 @@
 
 The various stages of the projects have tests of their own that ensure that there is not mistake in the actual run of the project.
 
+## How to run this project
+
+* open the index.html file on your favorite browser to run this project
+
 The tests are:
 
 ## The first test is a basic test on RSS feeds that ensures-

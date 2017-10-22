@@ -35,7 +35,8 @@ $(function() {
         it('has URL', function() {
             allFeeds.forEach(function(val){
                 expect(val.url).toBeDefined();
-              expect(val.url).not.toBe("");
+                expect(val.url).not.toBe("");
+                expect(feed.name).not.toBeNull();
            });
         });
         /* TODO: Write a test that loops through each feed
@@ -63,9 +64,8 @@ $(function() {
         * hiding/showing of the menu element.
         */
         it('shows on click', function() {
-            className = $('body').attr('class').split(' ');
 
-            expect(className).toContain('menu-hidden');
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
         
         /* TODO: Write a test that ensures the menu changes
@@ -76,13 +76,11 @@ $(function() {
         it('shows/hides menu on click', function() {
             $('.menu-icon-link').click();
 
-            className = $('body').attr('class').split(' ');
-            expect(className).not.toContain('menu-hidden');
+            expect($('body').hasClass('menu-hidden')).not.toBe(false);
 
             $('.menu-icon-link').click();
 
-            className = $('body').attr('class').split(' ');
-            expect(className).toContain('menu-hidden');
+            expect($('body').hasClass('menu-hidden')).not.toBe(true);
 
             /*$('a[data-id="1"]').click();
 
@@ -116,7 +114,7 @@ $(function() {
         });
 
         it("are not empty", function() {
-            expect($('.feed .entry-link')).not.toBe(null);
+            expect($('.feed .entry').length).not.toBe(0);
             
         });
     });
@@ -130,15 +128,16 @@ $(function() {
         var firstFeed, secondFeed;
 
         beforeEach(function(done) {
-            loadFeed(0, function(done) {
+            loadFeed(0, function() {
                 firstFeed = $('.feed').html();
-            });
-            loadFeed(0, function(done) {
-                secondFeed = $('.feed').html();
+                loadFeed(1, function() {
+                    secondFeed = $('.feed').html();
+                    done();
+                });
             });
         });
 
-        it("two different links", function(done) {
+        it("two different links", function() {
             expect(firstFeed).not.toBe(secondFeed);
         });
     });
