@@ -135,7 +135,7 @@ $(function() {
             });
             loadFeed(0, function(done) {
                 secondFeed = $('.feed').html();
-            })
+            });
         });
 
         it("two different links", function(done) {
