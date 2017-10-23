@@ -36,7 +36,6 @@ $(function() {
             allFeeds.forEach(function(val){
                 expect(val.url).toBeDefined();
                 expect(val.url).not.toBe("");
-                expect(feed.name).not.toBeNull();
            });
         });
         /* TODO: Write a test that loops through each feed
